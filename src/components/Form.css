@@ -1,0 +1,11 @@
+
+.horizontal-slider{
+width: 20%;
+
+}
+.thumb{
+   background: lightblue; 
+}
+.track{
+    background: gray; 
+}
