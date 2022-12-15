@@ -1,0 +1,67 @@
+# Settings in the [build] context are global and are applied to
+# all contexts unless otherwise overridden by more specific contexts.
+[build]
+  base = "/"
+  command = "npm run build"
+  functions = "build"
+  publish = "build"
+
+
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+
+[context.production]
+  publish = "/"
+  environment = { NODE_VERSION = "18.12.1" }
+
+[context.deploy-preview]
+  publish = "/"
+
+[context.deploy-preview.environment]
+  NOT_PRIVATE_ITEM = "not so secret"
+
+[context.branch-deploy]
+[context.branch-deploy.environment]
+  NODE_ENV = "development"
+
+[context.dev.environment]
+  NODE_ENV = "development"
+
+[context.staging] # “staging” is a branch name
+  base = "staging"
+
+
+[[redirects]]
+  from = "/*"
+  to = "/"
+
+ 
+
+[[redirects]]
+  status = 200
+
+[[headers]]
+  # Define which paths this specific [[headers]] block will cover.
+  for = "/*"
+
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    Content-Security-Policy = "frame-ancestors https://www.facebook.com"
+
+    # Multi-value headers are expressed with multi-line strings.
+  cache-control = '''
+  max-age=0,
+  no-cache,
+  no-store,
+  must-revalidate'''
+    Basic-Auth = "someuser:somepassword anotheruser:anotherpassword"
+
+[functions]
+  directory = "functions/"
+
+[dev]
+  port = 8888
+  publish = "/"
+
+
