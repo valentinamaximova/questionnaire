@@ -15,9 +15,9 @@ function AllCodes() {
     //   .then((text) => setText(text));
     // } 
    
-      if(text.length === 0){
-        window.onload = fetchData();
-      }
+      // if(text.length === 0){
+      //   window.onload = fetchData();
+      // }
       (async () => {
         let results = await fetch("/.netlify/functions/get_questionnaire").then(response => response.json());
         results.forEach(result => {
