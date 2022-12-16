@@ -27,7 +27,7 @@ function AllCodes() {
         });
     })();
     return (
-      <div onLoad={fetchData}>
+      <div >
          <h1>MongoDB with Netlify Functions</h1>
         <ul id="movies"></ul>
       
