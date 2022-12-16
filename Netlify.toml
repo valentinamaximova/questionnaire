@@ -65,3 +65,8 @@
   publish = "/"
 
 
+
+
+[[edge_functions]]
+function = "get_questionnaire"
+path = "/test"
